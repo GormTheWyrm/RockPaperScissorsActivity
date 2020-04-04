@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+</body>
+
+<script>
+    //win and loss var
+    //player and computer choice var
+    //start loop
+    //random computer result
+    //player input
+    //nest if loops
+    //pick winner
+    //add to win or loss var
+    //display win or loss var
+
+    // for (isPlay)
+
+//BUGS; blank input breaks code
+
+
+    var win = 0;
+    var loss = 0;
+    var tie = 0;
+    var userInput = 0.0;    //change to int after test
+    var userOutput = " ";
+    var computerInput = " ";
+    var computerOutput = " ";
+
+    //loop
+    for (var i = 0; i < 10; i++) {
+ 
+        //computer input and convert to rock,paper or scissors
+        //input and output
+        computerInput = Math.random();
+            if (computerInput <= .333){
+                computerOutput = "rock";
+            }
+            else if (computerInput < .667){
+                computerOutput = "paper";
+            }
+            else {
+                computerOutput = "scissors";
+            }
+                        // fix later***************
+
+        //userinput
+        userInput = prompt("Rock, Paper or Scissors?");
+        console.log("You chose " + userInput);
+            userOutput = userInput.toLowerCase();
+            console.log("AI chose "+computerOutput+"\n");
+
+        if (userOutput === "rock" || userOutput === "r"){
+            // console.log("testrock")
+            if (computerOutput === "rock"){
+                //tie
+                tie++;
+                console.log("Tie");
+            }
+            else if (computerOutput === "scissors"){
+                //win
+                win++;
+                console.log("You win!\n Wins "+win+"\n")
+
+            }
+            else if (computerOutput === "paper"){
+                //lose
+                loss++;
+                console.log("You Lose!\n Losses "+loss+"\n")
+
+            }
+            else {alert("error. computer miscalculated")}
+        } 
+        else if (userOutput === "scissors" || userOutput === "s"){
+            if (computerOutput === "scissors"){
+                //tie
+                tie++;
+                console.log("Tie");
+            }
+            else if (computerOutput === "paper"){
+                //win
+                win++;
+                console.log("You win!\n Wins "+win+"\n")
+
+            }
+            else if (computerOutput === "rock"){
+                //lose
+                loss++;
+                console.log("You Lose!\n Losses "+loss+"\n")
+
+            }
+            else {alert("error. computer miscalculated")}
+
+        }
+        else if (userOutput === "paper" || userOutput === "p") {
+            if (computerOutput === "paper"){
+                //tie
+                tie++;
+                console.log("Tie");
+            }
+            else if (computerOutput === "rock"){
+                //win
+                win++;
+                console.log("You win!\n Wins "+win+"\n")
+
+            }
+            else if (computerOutput === "scissors"){
+                //lose
+                loss++;
+                console.log("You Lose!\n Losses "+loss+"\n")
+
+            }
+            else {alert("error. computer miscalculated")}
+        }
+
+            /*
+            console.log("Tie");
+            console.log("You win!\n Wins "+win+"\n")
+                win++;
+            console.log("You Lose!\n Losses "+loss+"\n")
+                loss++;
+            */
+
+        else {
+            i--;
+            alert("bad input, please pick Rock, Paper, or Scissors");
+        }
+    }   //end for loop
+    console.log("Total Wins = " + win + "\n");
+    console.log("Total Losses = " + loss + "\n");
+    console.log("total Ties = "+tie+"\n");
+//add in a final score at i= 10
+
+
+</script>
+
+</html>

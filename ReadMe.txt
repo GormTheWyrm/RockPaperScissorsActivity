@@ -1,0 +1,1 @@
+User clicks on the rock, paper or scissor icons

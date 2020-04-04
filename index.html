@@ -1,14 +1,129 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Rock Paper Scissors</title>
+
+    <style>
+        body {
+            background-color: darkolivegreen;
+        }
+
+        .choice {
+            width: 150px;
+            height: 150px;
+            border: solid crimson;
+            margin-left: 9%;
+            margin-right: 9%;
+            margin-top: 16px;
+            /* margin-bottom: 6px; */
+            display: inline-block;
+
+        }
+
+        #talking-block {
+            border: solid coral;
+            width: fit-content;
+            /* min-width: 30px; */
+            margin-left: 30%;
+        }
+        #refresh{
+            border: solid coral;
+            width: fit-content;
+            /* min-width: 30px; */
+            margin-left: 40%;
+            margin-top: 20px;
+        }
+
+        @media only screen and (max-width: 600px) {
+            .choice {
+                margin-left: 10%;
+                margin-right: 10%;
+                width: 80%;
+            }
+        }
+    </style>
 </head>
+
+
+
+
 <body>
-    
 
+    <div id="talking-block">
+        <h1 id="score-count"></h1>
+        <h2 id="directions">Click Rock, Paper or Scissors!</h2>
+        <h3 id="message"></h3>
+    </div>
+    <div id="rock" class="choice">ROCK</div>
+    <div id="paper" class="choice">PAPER</div>
+    <div id="scissors" class="choice">SCISSORS</div>
+    <div id="refresh"  >REFRESH</div>
+
+    <script>
+        let score = 0;
+        let wins = 0;
+        let ties = 0;
+        let losses = 0;
+
+        let targetScore = 3
+        //change to const after done testing
+        let humanChoice = "";
+            // wont need this as its button based...
+        let computerChoice = "";
+
+        let Rock = document.getElementById("rock");
+        let Paper = document.getElementById("paper");
+        let Scissors = document.getElementById("scissors");
+        let Score = document.getElementById("score-count");
+        let Dir = document.getElementById("directions");
+            //hope this is valid
+        let Msg = document.getElementById("message");
+        let myR = 0;
+
+        //on button click; class of .choice
+        //runs random function
+        //picks rock, papper or scissor for computer
+        function makeRandom() {
+            myR = Math.ceil((Math.random() * 9));
+            // ((Math.random * 10)-1).toFixed(0);
+            console.log(myR);
+            if (myR > 6) {
+                computerChoice = "Rock";
+            } else if (myR < 3) {
+                computerChoice = "Scissors";
+            } else {
+                computerChoice = "Paper";
+            }
+        }
+
+        Rock.addEventListener("click", function () {
+            makeRandom();
+            if (computerChoice === "Rock"){
+                //tie
+            } else if (computerChoice === "Scissors"){
+                //win
+            } else if (computerChoice = "Paper"){
+                //loss
+            }else{
+                console.log("error");
+                //make this real later
+            }
+
+            //clear #score
+            //calculate random function
+            //display message in #message
+            //computer chose computerChoice
+            //you chose humanChoice
+
+
+        });
+
+
+
+    </script>
 </body>
-
 
 </html>
