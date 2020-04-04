@@ -29,7 +29,8 @@
             /* min-width: 30px; */
             margin-left: 30%;
         }
-        #refresh{
+
+        #refresh {
             border: solid coral;
             width: fit-content;
             /* min-width: 30px; */
@@ -55,41 +56,52 @@
     <div id="talking-block">
         <h1 id="score-count"></h1>
         <h2 id="directions">Click Rock, Paper or Scissors!</h2>
-        <h3 id="message"></h3>
+        <h3 id="message1"></h3>
+        <h3 id="message2"></h3>
+        <span>Wins: </span>
+        <span id="wins"></span>
+        <br>
+        <span>Ties: </span>
+        <span id="ties"></span>
+        <br>
+        <span>Losses: </span>
+        <span id="losses"></span>
     </div>
     <div id="rock" class="choice">ROCK</div>
     <div id="paper" class="choice">PAPER</div>
     <div id="scissors" class="choice">SCISSORS</div>
-    <div id="refresh"  >REFRESH</div>
+    <div id="refresh">REFRESH</div>
 
     <script>
         let score = 0;
         let wins = 0;
         let ties = 0;
         let losses = 0;
-
-        let targetScore = 3
-        //change to const after done testing
+// target score hardcoded
         let humanChoice = "";
-            // wont need this as its button based...
+        // wont need this as its button based...
         let computerChoice = "";
 
         let Rock = document.getElementById("rock");
         let Paper = document.getElementById("paper");
         let Scissors = document.getElementById("scissors");
-        let Score = document.getElementById("score-count");
+        // let Score = document.getElementById("score-count");
         let Dir = document.getElementById("directions");
-            //hope this is valid
-        let Msg = document.getElementById("message");
+        //hope this is valid
+        let Msg1 = document.getElementById("message1");
+        let Msg2 = document.getElementById("message2");
+        let Reset = document.getElementById("refresh");
         let myR = 0;
+        let Tie = document.getElementById("ties");
+        let Win = document.getElementById("wins");
+        let Loss = document.getElementById("losses");
 
         //on button click; class of .choice
         //runs random function
         //picks rock, papper or scissor for computer
         function makeRandom() {
             myR = Math.ceil((Math.random() * 9));
-            // ((Math.random * 10)-1).toFixed(0);
-            console.log(myR);
+            // console.log(myR);
             if (myR > 6) {
                 computerChoice = "Rock";
             } else if (myR < 3) {
@@ -99,29 +111,87 @@
             }
         }
 
+        function DisplayStats(){
+            Win.textContent = wins;
+            Loss.textContent = losses;
+            Tie.textContent = ties;
+            Msg1.textContent = "You chose "+ humanChoice;
+            Msg2.textContent = "Computer Chose " + computerChoice;
+        }
+        function endGame(){
+            if (wins ==10){
+                Dir.textContent = "YOU WON!!!"
+            }else if (losses == 10){
+                Dir.textContent = "YOU LOST!!!"
+            }
+        }
+
         Rock.addEventListener("click", function () {
+            humanChoice = "Rock";
             makeRandom();
-            if (computerChoice === "Rock"){
+            if (computerChoice === "Rock") {
                 //tie
-            } else if (computerChoice === "Scissors"){
+                ties++
+            } else if (computerChoice === "Scissors") {
                 //win
-            } else if (computerChoice = "Paper"){
+                wins++;
+                score++;
+            } else if (computerChoice = "Paper") {
                 //loss
-            }else{
+                losses++;
+            } else {
                 console.log("error");
                 //make this real later
             }
-
-            //clear #score
-            //calculate random function
-            //display message in #message
-            //computer chose computerChoice
-            //you chose humanChoice
-
-
+            DisplayStats();
+            endGame();
+            // only ends game if 10 wins/losses
         });
 
+        //paper function
+        Paper.addEventListener("click", function () {
+            humanChoice = "Paper";
+            makeRandom();
+            if (computerChoice === "Rock") {
+                wins++;
+                score++;
+            } else if (computerChoice === "Scissors") {
+               losses++;
+            } else if (computerChoice = "Paper") {
+               ties++;
+            } else {
+                console.log("error");
+                //make this real later
+            }
+            DisplayStats();
+            endGame();
+            // only ends game if 10 wins/losses
+        });
 
+        //scissors function
+        Scissors.addEventListener("click", function () {
+            humanChoice = "Scissors";
+            makeRandom();
+            if (computerChoice === "Rock") {
+                losses++;
+            } else if (computerChoice === "Scissors") {
+                ties++;
+            } else if (computerChoice = "Paper") {
+                wins++;
+                score++;
+            } else {
+                console.log("error");
+                //make this real later
+            }
+            DisplayStats();
+            endGame();
+            // only ends game if 10 wins/losses
+        });
+
+        //reset function (just calls refresh!)
+        Reset.addEventListener("click", function () {
+            location.reload();
+        });
 
     </script>
 </body>
