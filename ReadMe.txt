@@ -1,3 +1,5 @@
+https://gormthewyrm.github.io/RockPaperScissorsActivity/
+
 User clicks on the rock, paper or scissor icons.
 Text box will update, informign user of their choice as well as the computers choice.
 Score also updates.
